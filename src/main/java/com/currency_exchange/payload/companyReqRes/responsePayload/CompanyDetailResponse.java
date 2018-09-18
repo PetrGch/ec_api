@@ -8,25 +8,15 @@ import com.currency_exchange.model.ExchangeCompanyDetail;
  */
 public class CompanyDetailResponse {
 
-  private String description;
   private String phone;
   private String website;
   private String email;
   private ExchangeCompany exchangeCompany;
 
   public CompanyDetailResponse(ExchangeCompanyDetail e) {
-    this.description = e.getDescription();
     this.phone = e.getPhone();
     this.website = e.getWebsite();
     this.email = e.getEmail();
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public String getPhone() {

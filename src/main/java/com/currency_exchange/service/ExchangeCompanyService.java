@@ -64,7 +64,6 @@ public class ExchangeCompanyService {
   private void setExchangeCompanyDetail(ExchangeCompany exchangeCompany, CompanyRequest companyRequest) {
     if (companyRequest.getExchangeCompanyDetail() != null) {
       exchangeCompany.setExchangeCompanyDetail(new ExchangeCompanyDetail(
-          companyRequest.getExchangeCompanyDetail().getDescription(),
           companyRequest.getExchangeCompanyDetail().getPhone(),
           companyRequest.getExchangeCompanyDetail().getWebsite(),
           companyRequest.getExchangeCompanyDetail().getEmail()
@@ -133,32 +132,32 @@ public class ExchangeCompanyService {
   private void setWorkingTime(ExchangeCompany exchangeCompany, WorkingTimeRequest workingTime) throws ParseException {
     WorkingTime wt = new WorkingTime();
 
-    wt.setMnFrom(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getMnFrom()));
-    wt.setMnTo(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getMnTo()));
+    wt.setMnFrom(new SimpleDateFormat("HH:mm").parse(workingTime.getMnFrom()));
+    wt.setMnTo(new SimpleDateFormat("HH:mm").parse(workingTime.getMnTo()));
 
-    wt.setTuFrom(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getTuFrom()));
-    wt.setTuTo(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getTuTo()));
+    wt.setTuFrom(new SimpleDateFormat("HH:mm").parse(workingTime.getTuFrom()));
+    wt.setTuTo(new SimpleDateFormat("HH:mm").parse(workingTime.getTuTo()));
 
-    wt.setWeFrom(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getWeFrom()));
-    wt.setWeTo(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getWeTo()));
+    wt.setWeFrom(new SimpleDateFormat("HH:mm").parse(workingTime.getWeFrom()));
+    wt.setWeTo(new SimpleDateFormat("HH:mm").parse(workingTime.getWeTo()));
 
-    wt.setThFrom(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getThFrom()));
-    wt.setThTo(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getThTo()));
+    wt.setThFrom(new SimpleDateFormat("HH:mm").parse(workingTime.getThFrom()));
+    wt.setThTo(new SimpleDateFormat("HH:mm").parse(workingTime.getThTo()));
 
-    wt.setFrFrom(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getFrFrom()));
-    wt.setFrTo(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getFrTo()));
+    wt.setFrFrom(new SimpleDateFormat("HH:mm").parse(workingTime.getFrFrom()));
+    wt.setFrTo(new SimpleDateFormat("HH:mm").parse(workingTime.getFrTo()));
 
     if (workingTime.getStFrom() != null && workingTime.getStTo() != null) {
-      wt.setStFrom(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getStFrom()));
-      wt.setStTo(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getStTo()));
+      wt.setStFrom(new SimpleDateFormat("HH:mm").parse(workingTime.getStFrom()));
+      wt.setStTo(new SimpleDateFormat("HH:mm").parse(workingTime.getStTo()));
     } else {
       wt.setStFrom(null);
       wt.setStTo(null);
     }
 
     if (workingTime.getSnFrom() != null && workingTime.getSnTo() != null) {
-      wt.setSnFrom(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getSnFrom()));
-      wt.setSnTo(new SimpleDateFormat("HH:mm:ss").parse(workingTime.getSnTo()));
+      wt.setSnFrom(new SimpleDateFormat("HH:mm").parse(workingTime.getSnFrom()));
+      wt.setSnTo(new SimpleDateFormat("HH:mm").parse(workingTime.getSnTo()));
     } else {
       wt.setSnFrom(null);
       wt.setSnTo(null);

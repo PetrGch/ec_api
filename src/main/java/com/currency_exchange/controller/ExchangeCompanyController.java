@@ -43,7 +43,12 @@ public class ExchangeCompanyController {
       if (exchangeCompanies != null && !exchangeCompanies.isEmpty()) {
         List<CompanyResponse> companies = new ArrayList<>();
         exchangeCompanies.stream().forEach((c) -> {
-          CompanyResponse companyResponse = new CompanyResponse(c);
+          CompanyResponse companyResponse = null;
+          try {
+            companyResponse = new CompanyResponse(c);
+          } catch (ParseException e) {
+            e.printStackTrace();
+          }
           companyResponse.setId(c.getId());
           companies.add(companyResponse);
         });
@@ -73,7 +78,7 @@ public class ExchangeCompanyController {
   }
 
   @GetMapping("/{id}")
-  private CompanyResponse getCompanyById(@PathVariable(value = "id") Long exchangeCompanyId) {
+  private CompanyResponse getCompanyById(@PathVariable(value = "id") Long exchangeCompanyId) throws ParseException {
 
     ExchangeCompany exchangeCompany = exchangeCompanyRepository.findById(exchangeCompanyId)
         .orElseThrow(() -> new ResourceNotFoundException("exchangeCompany", "id", exchangeCompanyId));

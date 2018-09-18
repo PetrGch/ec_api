@@ -16,9 +16,6 @@ public class ExchangeCompanyDetail {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Size(max = 400)
-  private String description;
-
   @Size(max = 20)
   private String phone;
 
@@ -35,12 +32,10 @@ public class ExchangeCompanyDetail {
   public ExchangeCompanyDetail() {}
 
   public ExchangeCompanyDetail(
-      @Size(max = 400) String description,
       @Size(max = 14) String phone,
       @Size(max = 50) String website,
       @Size(max = 50) String email
   ) {
-    this.description = description;
     this.phone = phone;
     this.website = website;
     this.email = email;
@@ -52,14 +47,6 @@ public class ExchangeCompanyDetail {
 
   public void setId(Long id) {
     this.id = id;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public String getPhone() {
@@ -98,7 +85,6 @@ public class ExchangeCompanyDetail {
   public String toString() {
     return "ExchangeCompanyDetail{" +
         "id=" + id +
-        ", description='" + description + '\'' +
         ", phone='" + phone + '\'' +
         ", website='" + website + '\'' +
         ", email='" + email + '\'' +

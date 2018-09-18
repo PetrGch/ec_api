@@ -17,7 +17,7 @@ public class WorkingTimeRequest {
   private String tuFrom;
 
   @NotNull
-  private String  tuTo;
+  private String tuTo;
 
   @NotNull
   private String weFrom;
@@ -36,6 +36,7 @@ public class WorkingTimeRequest {
 
   @NotNull
   private String frTo;
+
   private String stFrom;
   private String stTo;
   private String snFrom;

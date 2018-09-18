@@ -1,8 +1,5 @@
 package com.currency_exchange.payload.companyReqRes.requestPayload;
 
-import com.currency_exchange.model.ExchangeCompany;
-import com.currency_exchange.model.ExchangeCompanyDetail;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
@@ -10,9 +7,6 @@ import javax.validation.constraints.Size;
  * Created by petr on 16.06.18.
  */
 public class CompanyDetailRequest {
-
-  @Size(max = 400)
-  private String description;
 
   @Size(max = 14)
   private String phone;
@@ -23,14 +17,6 @@ public class CompanyDetailRequest {
   @Size(max = 50)
   @Email
   private String email;
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
 
   public String getPhone() {
     return phone;

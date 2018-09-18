@@ -2,176 +2,160 @@ package com.currency_exchange.payload.companyReqRes.responsePayload;
 
 import com.currency_exchange.model.WorkingTime;
 
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by petr on 16.06.18.
  */
 public class WorkingTimeResponse {
 
-  @NotNull
-  private Date mnFrom;
-
-  @NotNull
-  private Date mnTo;
-
-  @NotNull
-  private Date tuFrom;
-
-  @NotNull
-  private Date  tuTo;
-
-  @NotNull
-  private Date weFrom;
-
-  @NotNull
-  private Date weTo;
-
-  @NotNull
-  private Date thFrom;
-
-  @NotNull
-  private Date thTo;
-
-  @NotNull
-  private Date frFrom;
-
-  @NotNull
-  private Date frTo;
-  private Date stFrom;
-  private Date stTo;
-  private Date snFrom;
-  private Date snTo;
+  private String mnFrom;
+  private String mnTo;
+  private String tuFrom;
+  private String tuTo;
+  private String weFrom;
+  private String weTo;
+  private String thFrom;
+  private String thTo;
+  private String frFrom;
+  private String frTo;
+  private String stFrom;
+  private String stTo;
+  private String snFrom;
+  private String snTo;
 
   public WorkingTimeResponse() {}
 
   public WorkingTimeResponse(WorkingTime wt) {
-    this.mnFrom = wt.getMnFrom();
-    this.mnTo = wt.getMnTo();
-    this.tuFrom = wt.getTuFrom();
-    this.tuTo = wt.getTuTo();
-    this.weFrom = wt.getWeFrom();
-    this.weTo = wt.getWeTo();
-    this.thFrom = wt.getThFrom();
-    this.thTo = wt.getThTo();
-    this.frFrom = wt.getFrFrom();
-    this.frTo = wt.getFrTo();
-    this.stFrom = wt.getStFrom();
-    this.stTo = wt.getStTo();
-    this.snFrom = wt.getSnFrom();
-    this.snTo = wt.getSnTo();
+    this.mnFrom = new SimpleDateFormat("HH:mm").format(wt.getMnFrom());
+    this.mnTo = new SimpleDateFormat("HH:mm").format(wt.getMnTo());
+    this.tuFrom = new SimpleDateFormat("HH:mm").format(wt.getTuFrom());
+    this.tuTo = new SimpleDateFormat("HH:mm").format(wt.getTuTo());
+    this.weFrom = new SimpleDateFormat("HH:mm").format(wt.getWeFrom());
+    this.weTo = new SimpleDateFormat("HH:mm").format(wt.getWeTo());
+    this.thFrom = new SimpleDateFormat("HH:mm").format(wt.getThFrom());
+    this.thTo = new SimpleDateFormat("HH:mm").format(wt.getThTo());
+    this.frFrom = new SimpleDateFormat("HH:mm").format(wt.getFrFrom());
+    this.frTo = new SimpleDateFormat("HH:mm").format(wt.getFrTo());
+    this.stFrom = wt.getStFrom() != null
+        ? new SimpleDateFormat("HH:mm").format(wt.getStFrom()) : null;
+    this.stTo = wt.getStTo() != null
+        ? new SimpleDateFormat("HH:mm").format(wt.getStTo()) : null;
+    this.snFrom = wt.getSnFrom() != null
+        ? new SimpleDateFormat("HH:mm").format(wt.getSnFrom()) : null;
+    this.snTo = wt.getSnTo() != null
+        ? new SimpleDateFormat("HH:mm").format(wt.getSnTo()) : null;
   }
 
-  public Date getMnFrom() {
+  public String getMnFrom() {
     return mnFrom;
   }
 
-  public void setMnFrom(Date mnFrom) {
+  public void setMnFrom(String mnFrom) {
     this.mnFrom = mnFrom;
   }
 
-  public Date getMnTo() {
+  public String getMnTo() {
     return mnTo;
   }
 
-  public void setMnTo(Date mnTo) {
+  public void setMnTo(String mnTo) {
     this.mnTo = mnTo;
   }
 
-  public Date getTuFrom() {
+  public String getTuFrom() {
     return tuFrom;
   }
 
-  public void setTuFrom(Date tuFrom) {
+  public void setTuFrom(String tuFrom) {
     this.tuFrom = tuFrom;
   }
 
-  public Date getTuTo() {
+  public String getTuTo() {
     return tuTo;
   }
 
-  public void setTuTo(Date tuTo) {
+  public void setTuTo(String tuTo) {
     this.tuTo = tuTo;
   }
 
-  public Date getWeFrom() {
+  public String getWeFrom() {
     return weFrom;
   }
 
-  public void setWeFrom(Date weFrom) {
+  public void setWeFrom(String weFrom) {
     this.weFrom = weFrom;
   }
 
-  public Date getWeTo() {
+  public String getWeTo() {
     return weTo;
   }
 
-  public void setWeTo(Date weTo) {
+  public void setWeTo(String weTo) {
     this.weTo = weTo;
   }
 
-  public Date getThFrom() {
+  public String getThFrom() {
     return thFrom;
   }
 
-  public void setThFrom(Date thFrom) {
+  public void setThFrom(String thFrom) {
     this.thFrom = thFrom;
   }
 
-  public Date getThTo() {
+  public String getThTo() {
     return thTo;
   }
 
-  public void setThTo(Date thTo) {
+  public void setThTo(String thTo) {
     this.thTo = thTo;
   }
 
-  public Date getFrFrom() {
+  public String getFrFrom() {
     return frFrom;
   }
 
-  public void setFrFrom(Date frFrom) {
+  public void setFrFrom(String frFrom) {
     this.frFrom = frFrom;
   }
 
-  public Date getFrTo() {
+  public String getFrTo() {
     return frTo;
   }
 
-  public void setFrTo(Date frTo) {
+  public void setFrTo(String frTo) {
     this.frTo = frTo;
   }
 
-  public Date getStFrom() {
+  public String getStFrom() {
     return stFrom;
   }
 
-  public void setStFrom(Date stFrom) {
+  public void setStFrom(String stFrom) {
     this.stFrom = stFrom;
   }
 
-  public Date getStTo() {
+  public String getStTo() {
     return stTo;
   }
 
-  public void setStTo(Date stTo) {
+  public void setStTo(String stTo) {
     this.stTo = stTo;
   }
 
-  public Date getSnFrom() {
+  public String getSnFrom() {
     return snFrom;
   }
 
-  public void setSnFrom(Date snFrom) {
+  public void setSnFrom(String snFrom) {
     this.snFrom = snFrom;
   }
 
-  public Date getSnTo() {
+  public String getSnTo() {
     return snTo;
   }
 
-  public void setSnTo(Date snTo) {
+  public void setSnTo(String snTo) {
     this.snTo = snTo;
   }
 }

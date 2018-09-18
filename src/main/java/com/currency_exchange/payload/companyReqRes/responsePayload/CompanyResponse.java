@@ -2,6 +2,7 @@ package com.currency_exchange.payload.companyReqRes.responsePayload;
 
 import com.currency_exchange.model.*;
 
+import java.text.ParseException;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +29,7 @@ public class CompanyResponse {
   private List<CurrencyRateResponse> currencyRates;
   private CompanyParseDataResponse exchangeCompanyParseData;
 
-  public CompanyResponse(ExchangeCompany e) {
+  public CompanyResponse(ExchangeCompany e) throws ParseException {
     this.id = e.getId();
     this.uniqueId = e.getUniqueId();
     this.name = e.getName();
