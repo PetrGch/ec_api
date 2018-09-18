@@ -45,6 +45,8 @@ public class ExchangeCompany extends DateAudit {
   @Size(max = 160)
   private String address;
 
+  private Boolean isCentralBank;
+
   private Float rating;
 
   @OneToOne(cascade = CascadeType.ALL)
@@ -74,7 +76,8 @@ public class ExchangeCompany extends DateAudit {
       @Size(max = 14) String coordinateX,
       @Size(max = 14) String coordinateY,
       @Size(max = 160) String address,
-      @Size(max = 4) Float rating
+      @Size(max = 4) Float rating,
+      Boolean isCentralBank
   ) {
     this.uniqueId = UUID.randomUUID().toString();
     this.name = name;
@@ -82,9 +85,10 @@ public class ExchangeCompany extends DateAudit {
     this.coordinateY = coordinateY;
     this.address = address;
     this.rating = rating;
+    this.isCentralBank = isCentralBank;
   }
 
-  public void addComent(Comment tempComment) {
+  public void addComment(Comment tempComment) {
     if (comments == null) {
       comments = new ArrayList<>();
     }
@@ -93,7 +97,7 @@ public class ExchangeCompany extends DateAudit {
     tempComment.setExchangeCompany(this);
   }
 
-  public void addAllComent(List<Comment> tempComments) {
+  public void addAllComment(List<Comment> tempComments) {
     if (comments == null) {
       comments = new ArrayList<>();
     }
@@ -227,6 +231,14 @@ public class ExchangeCompany extends DateAudit {
     this.exchangeCompanyParseData = exchangeCompanyParseData;
   }
 
+  public Boolean getCentralBank() {
+    return isCentralBank;
+  }
+
+  public void setCentralBank(Boolean centralBank) {
+    isCentralBank = centralBank;
+  }
+
   @Override
   public String toString() {
     return "ExchangeCompany{" +
@@ -236,7 +248,7 @@ public class ExchangeCompany extends DateAudit {
         ", coordinateX='" + coordinateX + '\'' +
         ", coordinateY='" + coordinateY + '\'' +
         ", address='" + address + '\'' +
-        ", workingTime='" + workingTime + '\'' +
+        ", isCentralBank=" + isCentralBank +
         ", rating=" + rating +
         '}';
   }

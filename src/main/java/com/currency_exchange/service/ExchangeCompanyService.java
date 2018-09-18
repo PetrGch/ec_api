@@ -13,8 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class ExchangeCompanyService {
@@ -59,6 +57,7 @@ public class ExchangeCompanyService {
     exchangeCompany.setCoordinateY(companyRequest.getCoordinateY());
     exchangeCompany.setAddress(companyRequest.getAddress());
     exchangeCompany.setRating(companyRequest.getRating());
+    exchangeCompany.setCentralBank(companyRequest.getCentralBank() != null ? companyRequest.getCentralBank() : false);
   }
 
   private void setExchangeCompanyDetail(ExchangeCompany exchangeCompany, CompanyRequest companyRequest) {
@@ -88,7 +87,7 @@ public class ExchangeCompanyService {
 
   private void setEchangeCompanyComments(ExchangeCompany exchangeCompany, CompanyRequest companyRequest) {
     if (companyRequest.getComments() != null && !companyRequest.getComments().isEmpty()) {
-      exchangeCompany.addAllComent(companyRequest.getComments());
+      exchangeCompany.addAllComment(companyRequest.getComments());
     }
   }
 

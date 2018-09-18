@@ -38,6 +38,8 @@ public class CompanyRequest {
   @Size(max = 4)
   private Float rating;
 
+  private Boolean isCentralBank;
+
   @NotNull
   private WorkingTimeRequest workingTime;
 
@@ -132,5 +134,13 @@ public class CompanyRequest {
 
   public void setWorkingTime(WorkingTimeRequest workingTimeRequest) {
     this.workingTime = workingTimeRequest;
+  }
+
+  public Boolean getCentralBank() {
+    return isCentralBank;
+  }
+
+  public void setCentralBank(Boolean centralBank) {
+    isCentralBank = centralBank;
   }
 }

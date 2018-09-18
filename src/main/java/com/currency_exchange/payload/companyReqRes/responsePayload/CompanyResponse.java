@@ -22,6 +22,7 @@ public class CompanyResponse {
   private Float rating;
   private Instant createdAt;
   private Instant updatedAt;
+  private Boolean isCentralBank;
 
   private CompanyDetailResponse exchangeCompanyDetail;
   private WorkingTimeResponse workingTime;
@@ -29,7 +30,7 @@ public class CompanyResponse {
   private List<CurrencyRateResponse> currencyRates;
   private CompanyParseDataResponse exchangeCompanyParseData;
 
-  public CompanyResponse(ExchangeCompany e) throws ParseException {
+  public CompanyResponse(ExchangeCompany e) {
     this.id = e.getId();
     this.uniqueId = e.getUniqueId();
     this.name = e.getName();
@@ -39,6 +40,7 @@ public class CompanyResponse {
     this.rating = e.getRating();
     this.createdAt = e.getCreatedAt();
     this.updatedAt = e.getUpdatedAt();
+    this.isCentralBank = e.getCentralBank();
     this.exchangeCompanyDetail = e.getExchangeCompanyDetail() != null
         ? new CompanyDetailResponse(e.getExchangeCompanyDetail()) : null;
     this.workingTime = e.getWorkingTime() != null
@@ -185,5 +187,13 @@ public class CompanyResponse {
 
   public void setExchangeCompanyParseData(CompanyParseDataResponse exchangeCompanyParseData) {
     this.exchangeCompanyParseData = exchangeCompanyParseData;
+  }
+
+  public Boolean getCentralBank() {
+    return isCentralBank;
+  }
+
+  public void setCentralBank(Boolean centralBank) {
+    isCentralBank = centralBank;
   }
 }
