@@ -1,5 +1,7 @@
 package com.currency_exchange;
 
+import com.currency_exchange.scriper.Scriper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -21,12 +23,16 @@ import java.util.TimeZone;
 })
 public class Application extends SpringBootServletInitializer {
 
+  @Autowired
+  static Scriper scriper;
+
   @PostConstruct
   void init() {
     TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
   }
 
   public static void main(String[] args) {
+
     new SpringApplicationBuilder(Application.class)
         .sources(Application.class)
         .properties(getProperties())
