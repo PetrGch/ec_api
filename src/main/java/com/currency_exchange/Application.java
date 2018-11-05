@@ -1,12 +1,8 @@
 package com.currency_exchange;
 
-import com.currency_exchange.scriper.Scriper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.annotation.PostConstruct;
 import java.util.Properties;
@@ -17,14 +13,7 @@ import java.util.TimeZone;
  */
 
 @SpringBootApplication
-@EntityScan(basePackageClasses = {
-    Application.class,
-    Jsr310JpaConverters.class
-})
 public class Application extends SpringBootServletInitializer {
-
-  @Autowired
-  static Scriper scriper;
 
   @PostConstruct
   void init() {
@@ -32,7 +21,6 @@ public class Application extends SpringBootServletInitializer {
   }
 
   public static void main(String[] args) {
-
     new SpringApplicationBuilder(Application.class)
         .sources(Application.class)
         .properties(getProperties())

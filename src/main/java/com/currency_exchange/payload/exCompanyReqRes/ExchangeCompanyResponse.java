@@ -1,47 +1,32 @@
-package com.currency_exchange.model;
+package com.currency_exchange.payload.exCompanyReqRes;
 
-import com.currency_exchange.model.audit.DateAudit;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
-@Entity
-@Table(name = "exchange_company", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {
-        "uuid"
-    }),
-    @UniqueConstraint(columnNames = {
-        "branch_name"
-    })
-})
-public class ExchangeCompany extends DateAudit {
+public class ExchangeCompanyResponse {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
   private Long id;
-
-  @NotNull
-  @Column(name = "uuid")
   private String uuid;
 
-  @Column(name = "company_name")
+  @JsonProperty("company_name")
   private String companyName;
 
-  @NotNull
-  @Column(name = "branch_name")
+  @JsonProperty("branch_name")
   private String branchName;
-
-  @Column(name = "lat")
   private String lat;
-
-  @Column(name = "lng")
   private String lng;
-
-  @Column(name = "is_central_bank")
+  @JsonProperty("created_at")
+  private String createdAt;
+  @JsonProperty("updated_at")
+  private String updatedAt;
+  @JsonProperty("is_central_bank")
   private boolean isCentralBank = false;
 
-  public ExchangeCompany() {}
+  @JsonProperty("exchange_currencies")
+  private List<?> exchangeCurrencies;
+
+  public ExchangeCompanyResponse() {}
 
   public Long getId() {
     return id;
@@ -91,6 +76,22 @@ public class ExchangeCompany extends DateAudit {
     this.lng = lng;
   }
 
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
   public boolean isCentralBank() {
     return isCentralBank;
   }
@@ -99,15 +100,11 @@ public class ExchangeCompany extends DateAudit {
     isCentralBank = centralBank;
   }
 
-  @Override
-  public String toString() {
-    return "ExchangeCompany{" +
-        "uuid=" + uuid +
-        ", companyName='" + companyName + '\'' +
-        ", branchName='" + branchName + '\'' +
-        ", lat='" + lat + '\'' +
-        ", lng='" + lng + '\'' +
-        ", isCentralBank=" + isCentralBank +
-        '}';
+  public List<?> getExchangeCurrencies() {
+    return exchangeCurrencies;
+  }
+
+  public void setExchangeCurrencies(List<?> exchangeCurrencies) {
+    this.exchangeCurrencies = exchangeCurrencies;
   }
 }

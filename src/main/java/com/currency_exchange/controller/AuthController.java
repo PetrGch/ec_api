@@ -11,6 +11,7 @@ import com.currency_exchange.payload.SignUpRequest;
 import com.currency_exchange.repository.RoleRepository;
 import com.currency_exchange.repository.UserRepository;
 import com.currency_exchange.security.JwtTokenProvider;
+import com.currency_exchange.util.UrlRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.net.URI;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.*;
 import java.util.Collections;
 
 /**
@@ -50,8 +54,15 @@ public class AuthController {
   JwtTokenProvider tokenProvider;
 
   @GetMapping("/some")
-  public String some() {
-    return "hi there";
+  public String some() throws IOException {
+    UrlRequest content = new UrlRequest
+        .UrlRequestBuilder()
+        .createConnection("http://excurrate.com:3001/exCompany")
+        .createParameters("GET")
+        .makeRequest()
+        .build();
+
+    return content.getResponseContent().toString();
   }
 
   @PostMapping("/signin")

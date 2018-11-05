@@ -88,7 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/**/*.js")
         .permitAll()
 //        .antMatchers("/api/auth/**")
-        .antMatchers("/api/auth/**", "/api/company/**", "/api/currency/**", "/api/parser/**", "/api/commentary/**") // TODO delete that path which should be covered by authorization rules
+        .antMatchers("/api/auth/**", "/api/exCompany/**", "/api/currency/**", "/api/parser/**", "/api/commentary/**") // TODO delete that path which should be covered by authorization rules
         .permitAll()
         .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
         .permitAll()

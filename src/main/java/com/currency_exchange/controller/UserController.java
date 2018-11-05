@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -24,6 +25,9 @@ public class UserController {
 
   @Autowired
   private UserRepository userRepository;
+
+  @Autowired
+  PasswordEncoder passwordEncoder;
 
   @GetMapping("/user/me")
   @PreAuthorize("hasRole('USER')")
@@ -49,11 +53,18 @@ public class UserController {
     User user = userRepository.findByUsername(username)
         .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
 
-    UserProfile userProfile = new UserProfile(user.getId(), user.getUsername(), user.getName(), user.getCreatedAt());
-
-    return userProfile;
+    return new UserProfile(user.getId(), user.getUsername(), user.getName(), user.getCreatedAt());
   }
 
+  @GetMapping("/users/byName/{username}")
+  public User getUser(@PathVariable(value = "username") String username) {
+    User user = userRepository.findByUsername(username)
+        .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
 
+    User responseUser = new User(user.getName(), user.getUsername(), user.getEmail(), user.getPassword());
+    responseUser.setRoles(user.getRoles());
+
+    return responseUser;
+  }
 
 }

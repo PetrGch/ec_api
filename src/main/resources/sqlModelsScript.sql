@@ -1,13 +1,64 @@
 CREATE DATABASE IF NOT EXISTS `currency_exchange`;
+CREATE DATABASE IF NOT EXISTS `ec_test`;
 USE `currency_exchange`;
+USE `ec_test`;
 
-INSERT INTO roles(name) VALUES('ROLE_USER');
-INSERT INTO roles(name) VALUES('ROLE_ADMIN');
-INSERT INTO roles(name) VALUES('ROLE_MANAGER');
+show databases;
+show tables;
+drop database `ec_test`;
+
+# roles table
+
+CREATE TABLE roles (
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(60) NOT NULL UNIQUE,
+  created_at datetime NOT NULL,
+  updated_at datetime NOT NULL
+
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+INSERT INTO roles(name, created_at, updated_at) VALUES('ROLE_USER', '2018/10/20', '2018/10/20');
+INSERT INTO roles(name, created_at, updated_at) VALUES('ROLE_ADMIN', '2018/10/20', '2018/10/20');
+INSERT INTO roles(name, created_at, updated_at) VALUES('ROLE_MANAGER', '2018/10/20', '2018/10/20');
 
 SELECT * FROM `roles`;
 
+# users table
+
+CREATE TABLE users (
+  id INT(11) AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(60) NOT NULL UNIQUE,
+  username VARCHAR(60) DEFAULT NULL,
+  email VARCHAR(60) NOT NULL UNIQUE,
+  password VARCHAR(60) NOT NULL,
+  created_at datetime NOT NULL,
+  updated_at datetime NOT NULL
+
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+INSERT INTO users(name, username, email, password, created_at, updated_at)
+  VALUE ('Peet', 'Petr Gulchuk', 'peet@gmail.com', '1111', '2018/10/20', '2018/10/20');
+
 SELECT * FROM `users`;
+
+# user_role table
+
+CREATE TABLE `user_role` (
+  `user_id` INT(11) NOT NULL,
+  `role_id` INT(11) NOT NULL,
+
+  PRIMARY KEY (`user_id`, `role_id`),
+
+  KEY `FK_STUDENT_idx` (`role_id`),
+
+  CONSTRAINT `FK_USER`
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+
+  CONSTRAINT `FK_ROLE`
+  FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+SELECT * FROM user_role;
 
 # exchange_currency table
 
