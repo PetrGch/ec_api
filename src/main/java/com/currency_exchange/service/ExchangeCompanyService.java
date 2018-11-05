@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class ExchangeCompanyService {
 
-  @Value("scraper.serverUrl")
+  @Value("${scraper.serverUrl}")
   private String url;
 
   private ObjectMapper objectMapper;
