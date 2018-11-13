@@ -26,6 +26,10 @@ public class ExchangeCompanyResponse {
   @JsonProperty("exchange_currencies")
   private List<?> exchangeCurrencies;
 
+  private ExchangeCompanyDetailResponse exchangeCompanyDetailResponse;
+
+  private ExchangeCompanyWorkingTimeResponse exchangeCompanyWorkingTimeResponse;
+
   public ExchangeCompanyResponse() {}
 
   public Long getId() {
@@ -106,5 +110,21 @@ public class ExchangeCompanyResponse {
 
   public void setExchangeCurrencies(List<?> exchangeCurrencies) {
     this.exchangeCurrencies = exchangeCurrencies;
+  }
+
+  public ExchangeCompanyDetailResponse getExchangeCompanyDetailResponse() {
+    return exchangeCompanyDetailResponse;
+  }
+
+  public void setExchangeCompanyDetailResponse(ExchangeCompanyDetailResponse exchangeCompanyDetailResponse) {
+    this.exchangeCompanyDetailResponse = exchangeCompanyDetailResponse;
+  }
+
+  public ExchangeCompanyWorkingTimeResponse getExchangeCompanyWorkingTimeResponse() {
+    return exchangeCompanyWorkingTimeResponse;
+  }
+
+  public void setExchangeCompanyWorkingTimeResponse(ExchangeCompanyWorkingTimeResponse exchangeCompanyWorkingTimeResponse) {
+    this.exchangeCompanyWorkingTimeResponse = exchangeCompanyWorkingTimeResponse;
   }
 }
