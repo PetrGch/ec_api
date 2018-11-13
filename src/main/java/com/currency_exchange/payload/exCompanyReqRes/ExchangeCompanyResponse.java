@@ -26,9 +26,11 @@ public class ExchangeCompanyResponse {
   @JsonProperty("exchange_currencies")
   private List<?> exchangeCurrencies;
 
-  private ExchangeCompanyDetailResponse exchangeCompanyDetailResponse;
+  @JsonProperty("exchange_company_detail")
+  private ExchangeCompanyDetailResponse exchangeCompanyDetail;
 
-  private ExchangeCompanyWorkingTimeResponse exchangeCompanyWorkingTimeResponse;
+  @JsonProperty("exchange_company_working_time")
+  private ExchangeCompanyWorkingTimeResponse exchangeCompanyWorkingTime;
 
   public ExchangeCompanyResponse() {}
 
@@ -112,19 +114,19 @@ public class ExchangeCompanyResponse {
     this.exchangeCurrencies = exchangeCurrencies;
   }
 
-  public ExchangeCompanyDetailResponse getExchangeCompanyDetailResponse() {
-    return exchangeCompanyDetailResponse;
+  public ExchangeCompanyDetailResponse getExchangeCompanyDetail() {
+    return exchangeCompanyDetail;
   }
 
-  public void setExchangeCompanyDetailResponse(ExchangeCompanyDetailResponse exchangeCompanyDetailResponse) {
-    this.exchangeCompanyDetailResponse = exchangeCompanyDetailResponse;
+  public void setExchangeCompanyDetail(ExchangeCompanyDetailResponse exchangeCompanyDetail) {
+    this.exchangeCompanyDetail = exchangeCompanyDetail;
   }
 
-  public ExchangeCompanyWorkingTimeResponse getExchangeCompanyWorkingTimeResponse() {
-    return exchangeCompanyWorkingTimeResponse;
+  public ExchangeCompanyWorkingTimeResponse getExchangeCompanyWorkingTime() {
+    return exchangeCompanyWorkingTime;
   }
 
-  public void setExchangeCompanyWorkingTimeResponse(ExchangeCompanyWorkingTimeResponse exchangeCompanyWorkingTimeResponse) {
-    this.exchangeCompanyWorkingTimeResponse = exchangeCompanyWorkingTimeResponse;
+  public void setExchangeCompanyWorkingTime(ExchangeCompanyWorkingTimeResponse exchangeCompanyWorkingTime) {
+    this.exchangeCompanyWorkingTime = exchangeCompanyWorkingTime;
   }
 }
